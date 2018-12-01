@@ -29,7 +29,7 @@ class Process_method:
                 error_rel = json.dumps(self.r.json(), sort_keys=True, indent=2)
                 return status_code,error_rel
         except (KeyError, requests.exceptions.ConnectionError) as err:
-            return err
+            return False,err
 
     def process_post(self,url,body):
         try:

@@ -1,2 +1,6 @@
 .idea/
-
+apitest/__pycache__/
+apitest/form/__pycache__/
+apitest/migrations/__pycache__/
+apitest/views/__pycache__/
+restapi/__pycache__/

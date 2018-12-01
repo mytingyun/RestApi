@@ -3,6 +3,8 @@ from apitest import models
 from apitest.form.allform import StartModelForm, EnvModelForm
 from apitest.views.process_request import Process_method
 import json
+from django.urls import reverse
+from django.utils import timezone
 
 
 def start_test(request):
@@ -51,11 +53,17 @@ def start_test(request):
             if term:
                 models.Test_Result.objects.update(api=api_queryset.apiname,
                                                 status_code=code,
-                                                test_content=result)
+                                                test_content=result,
+                                                test_data=timezone.now())
             else:
                 models.Test_Result.objects.create(api=api_queryset.apiname,
                                                   status_code=code,
                                                   test_content=result)
-            return HttpResponse('状态码：%s,结果：%s' %(code,result))
+            return redirect(reverse('test_result'))
 
     return render(request, 'start.html', {'form': env_form})
+
+
+def test_result(request):
+    res_queryset = models.Test_Result.objects.all()
+    return render(request,'result_list.html',{'res_queryset':res_queryset})

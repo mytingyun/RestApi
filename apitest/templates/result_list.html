@@ -1,0 +1,35 @@
+{% extends 'motherboard.html' %}
+
+{% block content %}
+
+
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>接口功能</th>
+            <th>返回状态码</th>
+            <th>返回body</th>
+            <th>执行日期</th>
+        </tr>
+        </thead>
+     <tbody>
+        {% for row in res_queryset %}
+                <tr>
+                    <td>{{ row.id }}</td>
+                    <td>{{ row.api }}</td>
+                    <td>{{ row.status_code }}</td>
+                    <td id="tree" width="30%" >{{ row.test_content }}</td>
+                    <td>{{ row.test_data }}</td>
+
+                </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div>
+
+
+    </div>
+
+
+{% endblock%}

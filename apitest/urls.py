@@ -34,4 +34,5 @@ urlpatterns = [
     url(r'^env/edit/(\d+)/$', host_env.envedit, name='envedit'),
     url(r'^env/del/(\d+)/$', host_env.envdel, name='envdel'),
     url(r'^start/$', start.start_test, name='start_test'),
+    url(r'^result/$', start.test_result, name='test_result'),
 ]
