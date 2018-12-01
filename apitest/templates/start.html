@@ -1,0 +1,62 @@
+{% extends 'motherboard.html' %}
+
+{% block content %}
+
+
+{#    <table class="table table-bordered">#}
+{#        <thead>#}
+{#        <tr>#}
+{#            <th>ID</th>#}
+{#            <th>Url名称</th>#}
+{#            <th>请求header</th>#}
+{#            <th>Url参数</th>#}
+{#            <th>请求body</th>#}
+{#            <th>请求方法</th>#}
+{#            <th>操作</th>#}
+{#        </tr>#}
+{#        </thead>#}
+{#     <tbody>#}
+{#        {% for row in api_queryset %}#}
+{#                <tr>#}
+{#                    <td>{{ row.id }}</td>#}
+{#                    <td>{{ row.url }}</td>#}
+{#                    <td width="20%">{{ row.header }}</td>#}
+{#                    <td>{{ row.parmary }}</td>#}
+{#                    <td>{{ row.body }}</td>#}
+{#                    <td>{{ row.get_methor_display }}</td>#}
+{##}
+{#                    <td>#}
+{#                        <a href="{% url 'apiedit' row.id %}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>编辑</a>#}
+{#                        |#}
+{#                        <a href="{% url 'apidel' row.id %}" style="color: red;"><i class="fa fa-trash-o" aria-hidden="true"></i>删除</a>#}
+{#                    </td>#}
+{#                </tr>#}
+{#        {% endfor %}#}
+{#        </tbody>#}
+{#    </table>#}
+
+
+<form class="form-horizontal" method="post" style="width:600px; margin:0 auto; margin-top: 50px" novalidate>
+        {% csrf_token %}
+
+        {% for item in form %}
+        <div class="form-group">
+            <label class="col-sm-2 control-label">{{ item.label }}</label>
+            <div class="col-sm-10">
+                {{ item }}
+                <span style="color: red;">{{ item.errors.0 }}</span>
+            </div>
+        </div>
+        {% endfor %}
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="submit" class="btn btn-primary" value="提 交">
+            </div>
+        </div>
+    </form>
+
+
+
+
+{% endblock%}

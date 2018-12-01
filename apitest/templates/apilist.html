@@ -1,0 +1,50 @@
+{% extends 'motherboard.html' %}
+
+{% block content %}
+    <div style="margin: 5px;">
+        <a href="{% url 'apiadd' %}" class="btn btn-primary"><i class="fa fa-plus-circle" aria-hidden="true"></i>添加接口</a>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>接口功能</th>
+            <th>Url名称</th>
+            <th>请求header</th>
+            <th>参数</th>
+            <th>请求body</th>
+            <th>请求方法</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+     <tbody>
+        {% for row in api_queryset %}
+                <tr>
+                    <td>{{ row.id }}</td>
+                    <td>{{ row.apiname }}</td>
+                    <td>{{ row.url }}</td>
+                    <td width="20%">{{ row.header }}</td>
+                    <td>{{ row.parmary }}</td>
+                    <td>{{ row.body }}</td>
+                    <td>{{ row.get_methor_display }}</td>
+
+                    <td>
+                        <a href="{% url 'apiedit' row.id %}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>编辑</a>
+                        |
+                        <a href="{% url 'apidel' row.id %}" style="color: red;"><i class="fa fa-trash-o" aria-hidden="true"></i>删除</a>
+                    </td>
+                </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div>
+        <h3>参数说明：</h3>
+        <p class="lead">【请求header】和【参数】要使用双引号的json串格式</p>
+
+
+    </div>
+
+
+
+
+{% endblock%}
