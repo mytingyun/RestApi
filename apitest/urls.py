@@ -19,8 +19,11 @@ from apitest.views import apis
 from apitest.views import url_man
 from apitest.views import host_env
 from apitest.views import start
+from apitest.views import users
 
 urlpatterns = [
+    url(r'^login/$',users.login,name='login'),
+    url(r'^logout/$',users.logout,name='logout'),
     url(r'^urls/list/$', url_man.urlslist,name='urllist'),
     url(r'^urls/add/$', url_man.urladd,name='urladd'),
     url(r'^urls/edit/(\d+)/$', url_man.urledit,name='urledit'),

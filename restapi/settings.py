@@ -48,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'apitest.middleware.astrict.ApiMiddleware',
 ]
 
 ROOT_URLCONF = 'restapi.urls'
@@ -125,3 +126,11 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+WHITE_LIST = ['/admin.*',
+              '/apitest/login/',
+
+              ]
+LOGIN_SUCCESS_SESSION = 'jfieowjkdjfijo2j3fsdf'
+
